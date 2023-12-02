@@ -1,0 +1,18 @@
+type Dapil @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  kode_dapil: String!
+  nama_dapil: String!
+}
+
+type Caleg @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  gender: String!
+  city: String!
+  img_src: String!
+  ex_koruptor: Boolean!
+  ex_koruptor_source: String
+  dapil: String!
+  no: Int!
+}
+ 
