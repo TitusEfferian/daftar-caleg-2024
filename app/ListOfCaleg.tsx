@@ -4,10 +4,12 @@ import { Card, Center, SimpleGrid, Text } from '@mantine/core';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { useIntersection } from '@mantine/hooks';
+import { useSearchParams } from 'next/navigation';
 import useListOfCaleg from '@/hooks/useListOfCaleg';
 
 const ListOfCaleg = () => {
-    const { isLoading, data, fetchNextPage } = useListOfCaleg();
+    const searchParams = useSearchParams();
+    const { isLoading, data, fetchNextPage } = useListOfCaleg({ searchName: searchParams.get('name') ?? '' });
     const containerRef = useRef<HTMLDivElement>(null);
     const { ref, entry } = useIntersection({
         root: containerRef.current,

@@ -5,10 +5,11 @@ import { generateClient } from 'aws-amplify/api';
 
 import { listCalonLegislatifs } from '@/src/graphql/queries';
 
-const useListOfCaleg = () => {
+const useListOfCaleg = ({ searchName = '' }) => {
     const result = useInfiniteQuery({
-        queryKey: ['listOfCaleg'],
+        queryKey: ['listOfCaleg', searchName],
         refetchOnWindowFocus: false,
+        staleTime: Infinity,
         queryFn: async ({ pageParam }) => {
             const client = generateClient();
             const listOfCaleg = await client.graphql({
@@ -16,6 +17,9 @@ const useListOfCaleg = () => {
                 variables: {
                     limit: 10,
                     nextToken: pageParam || null,
+                    filter: {
+                        name: { contains: searchName },
+                    },
                 },
             });
             return listOfCaleg;
