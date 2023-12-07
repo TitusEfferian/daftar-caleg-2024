@@ -75,9 +75,10 @@ export type DeleteDapilInput = {
   id: string,
 };
 
-export type CreateCalegInput = {
+export type CreateCalonLegislatifInput = {
   id?: string | null,
   name: string,
+  party: string,
   gender: string,
   city: string,
   img_src: string,
@@ -87,8 +88,9 @@ export type CreateCalegInput = {
   no: number,
 };
 
-export type ModelCalegConditionInput = {
+export type ModelCalonLegislatifConditionInput = {
   name?: ModelStringInput | null,
+  party?: ModelStringInput | null,
   gender?: ModelStringInput | null,
   city?: ModelStringInput | null,
   img_src?: ModelStringInput | null,
@@ -96,9 +98,9 @@ export type ModelCalegConditionInput = {
   ex_koruptor_source?: ModelStringInput | null,
   dapil?: ModelStringInput | null,
   no?: ModelIntInput | null,
-  and?: Array< ModelCalegConditionInput | null > | null,
-  or?: Array< ModelCalegConditionInput | null > | null,
-  not?: ModelCalegConditionInput | null,
+  and?: Array< ModelCalonLegislatifConditionInput | null > | null,
+  or?: Array< ModelCalonLegislatifConditionInput | null > | null,
+  not?: ModelCalonLegislatifConditionInput | null,
 };
 
 export type ModelBooleanInput = {
@@ -120,10 +122,11 @@ export type ModelIntInput = {
   attributeType?: ModelAttributeTypes | null,
 };
 
-export type Caleg = {
-  __typename: "Caleg",
+export type CalonLegislatif = {
+  __typename: "CalonLegislatif",
   id: string,
   name: string,
+  party: string,
   gender: string,
   city: string,
   img_src: string,
@@ -135,9 +138,10 @@ export type Caleg = {
   updatedAt: string,
 };
 
-export type UpdateCalegInput = {
+export type UpdateCalonLegislatifInput = {
   id: string,
   name?: string | null,
+  party?: string | null,
   gender?: string | null,
   city?: string | null,
   img_src?: string | null,
@@ -147,7 +151,7 @@ export type UpdateCalegInput = {
   no?: number | null,
 };
 
-export type DeleteCalegInput = {
+export type DeleteCalonLegislatifInput = {
   id: string,
 };
 
@@ -182,9 +186,10 @@ export type ModelDapilConnection = {
   nextToken?: string | null,
 };
 
-export type ModelCalegFilterInput = {
+export type ModelCalonLegislatifFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
+  party?: ModelStringInput | null,
   gender?: ModelStringInput | null,
   city?: ModelStringInput | null,
   img_src?: ModelStringInput | null,
@@ -192,14 +197,14 @@ export type ModelCalegFilterInput = {
   ex_koruptor_source?: ModelStringInput | null,
   dapil?: ModelStringInput | null,
   no?: ModelIntInput | null,
-  and?: Array< ModelCalegFilterInput | null > | null,
-  or?: Array< ModelCalegFilterInput | null > | null,
-  not?: ModelCalegFilterInput | null,
+  and?: Array< ModelCalonLegislatifFilterInput | null > | null,
+  or?: Array< ModelCalonLegislatifFilterInput | null > | null,
+  not?: ModelCalonLegislatifFilterInput | null,
 };
 
-export type ModelCalegConnection = {
-  __typename: "ModelCalegConnection",
-  items:  Array<Caleg | null >,
+export type ModelCalonLegislatifConnection = {
+  __typename: "ModelCalonLegislatifConnection",
+  items:  Array<CalonLegislatif | null >,
   nextToken?: string | null,
 };
 
@@ -241,9 +246,10 @@ export type ModelSubscriptionStringInput = {
   notIn?: Array< string | null > | null,
 };
 
-export type ModelSubscriptionCalegFilterInput = {
+export type ModelSubscriptionCalonLegislatifFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   name?: ModelSubscriptionStringInput | null,
+  party?: ModelSubscriptionStringInput | null,
   gender?: ModelSubscriptionStringInput | null,
   city?: ModelSubscriptionStringInput | null,
   img_src?: ModelSubscriptionStringInput | null,
@@ -251,8 +257,8 @@ export type ModelSubscriptionCalegFilterInput = {
   ex_koruptor_source?: ModelSubscriptionStringInput | null,
   dapil?: ModelSubscriptionStringInput | null,
   no?: ModelSubscriptionIntInput | null,
-  and?: Array< ModelSubscriptionCalegFilterInput | null > | null,
-  or?: Array< ModelSubscriptionCalegFilterInput | null > | null,
+  and?: Array< ModelSubscriptionCalonLegislatifFilterInput | null > | null,
+  or?: Array< ModelSubscriptionCalonLegislatifFilterInput | null > | null,
 };
 
 export type ModelSubscriptionBooleanInput = {
@@ -320,16 +326,17 @@ export type DeleteDapilMutation = {
   } | null,
 };
 
-export type CreateCalegMutationVariables = {
-  input: CreateCalegInput,
-  condition?: ModelCalegConditionInput | null,
+export type CreateCalonLegislatifMutationVariables = {
+  input: CreateCalonLegislatifInput,
+  condition?: ModelCalonLegislatifConditionInput | null,
 };
 
-export type CreateCalegMutation = {
-  createCaleg?:  {
-    __typename: "Caleg",
+export type CreateCalonLegislatifMutation = {
+  createCalonLegislatif?:  {
+    __typename: "CalonLegislatif",
     id: string,
     name: string,
+    party: string,
     gender: string,
     city: string,
     img_src: string,
@@ -342,16 +349,17 @@ export type CreateCalegMutation = {
   } | null,
 };
 
-export type UpdateCalegMutationVariables = {
-  input: UpdateCalegInput,
-  condition?: ModelCalegConditionInput | null,
+export type UpdateCalonLegislatifMutationVariables = {
+  input: UpdateCalonLegislatifInput,
+  condition?: ModelCalonLegislatifConditionInput | null,
 };
 
-export type UpdateCalegMutation = {
-  updateCaleg?:  {
-    __typename: "Caleg",
+export type UpdateCalonLegislatifMutation = {
+  updateCalonLegislatif?:  {
+    __typename: "CalonLegislatif",
     id: string,
     name: string,
+    party: string,
     gender: string,
     city: string,
     img_src: string,
@@ -364,16 +372,17 @@ export type UpdateCalegMutation = {
   } | null,
 };
 
-export type DeleteCalegMutationVariables = {
-  input: DeleteCalegInput,
-  condition?: ModelCalegConditionInput | null,
+export type DeleteCalonLegislatifMutationVariables = {
+  input: DeleteCalonLegislatifInput,
+  condition?: ModelCalonLegislatifConditionInput | null,
 };
 
-export type DeleteCalegMutation = {
-  deleteCaleg?:  {
-    __typename: "Caleg",
+export type DeleteCalonLegislatifMutation = {
+  deleteCalonLegislatif?:  {
+    __typename: "CalonLegislatif",
     id: string,
     name: string,
+    party: string,
     gender: string,
     city: string,
     img_src: string,
@@ -422,15 +431,16 @@ export type ListDapilsQuery = {
   } | null,
 };
 
-export type GetCalegQueryVariables = {
+export type GetCalonLegislatifQueryVariables = {
   id: string,
 };
 
-export type GetCalegQuery = {
-  getCaleg?:  {
-    __typename: "Caleg",
+export type GetCalonLegislatifQuery = {
+  getCalonLegislatif?:  {
+    __typename: "CalonLegislatif",
     id: string,
     name: string,
+    party: string,
     gender: string,
     city: string,
     img_src: string,
@@ -443,19 +453,20 @@ export type GetCalegQuery = {
   } | null,
 };
 
-export type ListCalegsQueryVariables = {
-  filter?: ModelCalegFilterInput | null,
+export type ListCalonLegislatifsQueryVariables = {
+  filter?: ModelCalonLegislatifFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListCalegsQuery = {
-  listCalegs?:  {
-    __typename: "ModelCalegConnection",
+export type ListCalonLegislatifsQuery = {
+  listCalonLegislatifs?:  {
+    __typename: "ModelCalonLegislatifConnection",
     items:  Array< {
-      __typename: "Caleg",
+      __typename: "CalonLegislatif",
       id: string,
       name: string,
+      party: string,
       gender: string,
       city: string,
       img_src: string,
@@ -515,15 +526,16 @@ export type OnDeleteDapilSubscription = {
   } | null,
 };
 
-export type OnCreateCalegSubscriptionVariables = {
-  filter?: ModelSubscriptionCalegFilterInput | null,
+export type OnCreateCalonLegislatifSubscriptionVariables = {
+  filter?: ModelSubscriptionCalonLegislatifFilterInput | null,
 };
 
-export type OnCreateCalegSubscription = {
-  onCreateCaleg?:  {
-    __typename: "Caleg",
+export type OnCreateCalonLegislatifSubscription = {
+  onCreateCalonLegislatif?:  {
+    __typename: "CalonLegislatif",
     id: string,
     name: string,
+    party: string,
     gender: string,
     city: string,
     img_src: string,
@@ -536,15 +548,16 @@ export type OnCreateCalegSubscription = {
   } | null,
 };
 
-export type OnUpdateCalegSubscriptionVariables = {
-  filter?: ModelSubscriptionCalegFilterInput | null,
+export type OnUpdateCalonLegislatifSubscriptionVariables = {
+  filter?: ModelSubscriptionCalonLegislatifFilterInput | null,
 };
 
-export type OnUpdateCalegSubscription = {
-  onUpdateCaleg?:  {
-    __typename: "Caleg",
+export type OnUpdateCalonLegislatifSubscription = {
+  onUpdateCalonLegislatif?:  {
+    __typename: "CalonLegislatif",
     id: string,
     name: string,
+    party: string,
     gender: string,
     city: string,
     img_src: string,
@@ -557,15 +570,16 @@ export type OnUpdateCalegSubscription = {
   } | null,
 };
 
-export type OnDeleteCalegSubscriptionVariables = {
-  filter?: ModelSubscriptionCalegFilterInput | null,
+export type OnDeleteCalonLegislatifSubscriptionVariables = {
+  filter?: ModelSubscriptionCalonLegislatifFilterInput | null,
 };
 
-export type OnDeleteCalegSubscription = {
-  onDeleteCaleg?:  {
-    __typename: "Caleg",
+export type OnDeleteCalonLegislatifSubscription = {
+  onDeleteCalonLegislatif?:  {
+    __typename: "CalonLegislatif",
     id: string,
     name: string,
+    party: string,
     gender: string,
     city: string,
     img_src: string,

@@ -41,10 +41,11 @@ export const listDapils = /* GraphQL */ `query ListDapils(
   APITypes.ListDapilsQueryVariables,
   APITypes.ListDapilsQuery
 >;
-export const getCaleg = /* GraphQL */ `query GetCaleg($id: ID!) {
-  getCaleg(id: $id) {
+export const getCalonLegislatif = /* GraphQL */ `query GetCalonLegislatif($id: ID!) {
+  getCalonLegislatif(id: $id) {
     id
     name
+    party
     gender
     city
     img_src
@@ -57,16 +58,20 @@ export const getCaleg = /* GraphQL */ `query GetCaleg($id: ID!) {
     __typename
   }
 }
-` as GeneratedQuery<APITypes.GetCalegQueryVariables, APITypes.GetCalegQuery>;
-export const listCalegs = /* GraphQL */ `query ListCalegs(
-  $filter: ModelCalegFilterInput
+` as GeneratedQuery<
+  APITypes.GetCalonLegislatifQueryVariables,
+  APITypes.GetCalonLegislatifQuery
+>;
+export const listCalonLegislatifs = /* GraphQL */ `query ListCalonLegislatifs(
+  $filter: ModelCalonLegislatifFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listCalegs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listCalonLegislatifs(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
       name
+      party
       gender
       city
       img_src
@@ -83,6 +88,6 @@ export const listCalegs = /* GraphQL */ `query ListCalegs(
   }
 }
 ` as GeneratedQuery<
-  APITypes.ListCalegsQueryVariables,
-  APITypes.ListCalegsQuery
+  APITypes.ListCalonLegislatifsQueryVariables,
+  APITypes.ListCalonLegislatifsQuery
 >;

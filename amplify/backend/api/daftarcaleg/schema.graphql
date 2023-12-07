@@ -4,9 +4,10 @@ type Dapil @model @auth(rules: [{allow: public}]) {
   nama_dapil: String!
 }
 
-type Caleg @model @auth(rules: [{allow: public}]) {
+type CalonLegislatif @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
+  party: String!
   gender: String!
   city: String!
   img_src: String!

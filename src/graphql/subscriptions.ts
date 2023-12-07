@@ -50,10 +50,13 @@ export const onDeleteDapil = /* GraphQL */ `subscription OnDeleteDapil($filter: 
   APITypes.OnDeleteDapilSubscriptionVariables,
   APITypes.OnDeleteDapilSubscription
 >;
-export const onCreateCaleg = /* GraphQL */ `subscription OnCreateCaleg($filter: ModelSubscriptionCalegFilterInput) {
-  onCreateCaleg(filter: $filter) {
+export const onCreateCalonLegislatif = /* GraphQL */ `subscription OnCreateCalonLegislatif(
+  $filter: ModelSubscriptionCalonLegislatifFilterInput
+) {
+  onCreateCalonLegislatif(filter: $filter) {
     id
     name
+    party
     gender
     city
     img_src
@@ -67,13 +70,16 @@ export const onCreateCaleg = /* GraphQL */ `subscription OnCreateCaleg($filter: 
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnCreateCalegSubscriptionVariables,
-  APITypes.OnCreateCalegSubscription
+  APITypes.OnCreateCalonLegislatifSubscriptionVariables,
+  APITypes.OnCreateCalonLegislatifSubscription
 >;
-export const onUpdateCaleg = /* GraphQL */ `subscription OnUpdateCaleg($filter: ModelSubscriptionCalegFilterInput) {
-  onUpdateCaleg(filter: $filter) {
+export const onUpdateCalonLegislatif = /* GraphQL */ `subscription OnUpdateCalonLegislatif(
+  $filter: ModelSubscriptionCalonLegislatifFilterInput
+) {
+  onUpdateCalonLegislatif(filter: $filter) {
     id
     name
+    party
     gender
     city
     img_src
@@ -87,13 +93,16 @@ export const onUpdateCaleg = /* GraphQL */ `subscription OnUpdateCaleg($filter: 
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnUpdateCalegSubscriptionVariables,
-  APITypes.OnUpdateCalegSubscription
+  APITypes.OnUpdateCalonLegislatifSubscriptionVariables,
+  APITypes.OnUpdateCalonLegislatifSubscription
 >;
-export const onDeleteCaleg = /* GraphQL */ `subscription OnDeleteCaleg($filter: ModelSubscriptionCalegFilterInput) {
-  onDeleteCaleg(filter: $filter) {
+export const onDeleteCalonLegislatif = /* GraphQL */ `subscription OnDeleteCalonLegislatif(
+  $filter: ModelSubscriptionCalonLegislatifFilterInput
+) {
+  onDeleteCalonLegislatif(filter: $filter) {
     id
     name
+    party
     gender
     city
     img_src
@@ -107,6 +116,6 @@ export const onDeleteCaleg = /* GraphQL */ `subscription OnDeleteCaleg($filter: 
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnDeleteCalegSubscriptionVariables,
-  APITypes.OnDeleteCalegSubscription
+  APITypes.OnDeleteCalonLegislatifSubscriptionVariables,
+  APITypes.OnDeleteCalonLegislatifSubscription
 >;

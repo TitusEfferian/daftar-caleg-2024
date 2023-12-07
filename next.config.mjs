@@ -6,6 +6,13 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 export default withBundleAnalyzer({
   reactStrictMode: false,
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'infopemilu.kpu.go.id'
+      }
+    ]
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },

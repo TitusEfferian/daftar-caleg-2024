@@ -1,9 +1,11 @@
 import '@mantine/core/styles.css';
 import React from 'react';
-import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+import { MantineProvider, ColorSchemeScript, Container, Stack } from '@mantine/core';
 
 import { theme } from '../theme';
 import AmplifyParent from './AmplifyParent';
+import QueryProvider from './QueryProvider';
+import Header from './Header';
 
 export const metadata = {
   title: 'Mantine Next.js template',
@@ -23,7 +25,16 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <AmplifyParent>
-          <MantineProvider theme={theme}>{children}</MantineProvider>
+          <QueryProvider>
+            <MantineProvider theme={theme}>
+              <Container>
+                <Stack>
+                  <Header />
+                  {children}
+                </Stack>
+              </Container>
+            </MantineProvider>
+          </QueryProvider>
         </AmplifyParent>
       </body>
     </html>

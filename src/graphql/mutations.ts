@@ -59,13 +59,14 @@ export const deleteDapil = /* GraphQL */ `mutation DeleteDapil(
   APITypes.DeleteDapilMutationVariables,
   APITypes.DeleteDapilMutation
 >;
-export const createCaleg = /* GraphQL */ `mutation CreateCaleg(
-  $input: CreateCalegInput!
-  $condition: ModelCalegConditionInput
+export const createCalonLegislatif = /* GraphQL */ `mutation CreateCalonLegislatif(
+  $input: CreateCalonLegislatifInput!
+  $condition: ModelCalonLegislatifConditionInput
 ) {
-  createCaleg(input: $input, condition: $condition) {
+  createCalonLegislatif(input: $input, condition: $condition) {
     id
     name
+    party
     gender
     city
     img_src
@@ -79,16 +80,17 @@ export const createCaleg = /* GraphQL */ `mutation CreateCaleg(
   }
 }
 ` as GeneratedMutation<
-  APITypes.CreateCalegMutationVariables,
-  APITypes.CreateCalegMutation
+  APITypes.CreateCalonLegislatifMutationVariables,
+  APITypes.CreateCalonLegislatifMutation
 >;
-export const updateCaleg = /* GraphQL */ `mutation UpdateCaleg(
-  $input: UpdateCalegInput!
-  $condition: ModelCalegConditionInput
+export const updateCalonLegislatif = /* GraphQL */ `mutation UpdateCalonLegislatif(
+  $input: UpdateCalonLegislatifInput!
+  $condition: ModelCalonLegislatifConditionInput
 ) {
-  updateCaleg(input: $input, condition: $condition) {
+  updateCalonLegislatif(input: $input, condition: $condition) {
     id
     name
+    party
     gender
     city
     img_src
@@ -102,16 +104,17 @@ export const updateCaleg = /* GraphQL */ `mutation UpdateCaleg(
   }
 }
 ` as GeneratedMutation<
-  APITypes.UpdateCalegMutationVariables,
-  APITypes.UpdateCalegMutation
+  APITypes.UpdateCalonLegislatifMutationVariables,
+  APITypes.UpdateCalonLegislatifMutation
 >;
-export const deleteCaleg = /* GraphQL */ `mutation DeleteCaleg(
-  $input: DeleteCalegInput!
-  $condition: ModelCalegConditionInput
+export const deleteCalonLegislatif = /* GraphQL */ `mutation DeleteCalonLegislatif(
+  $input: DeleteCalonLegislatifInput!
+  $condition: ModelCalonLegislatifConditionInput
 ) {
-  deleteCaleg(input: $input, condition: $condition) {
+  deleteCalonLegislatif(input: $input, condition: $condition) {
     id
     name
+    party
     gender
     city
     img_src
@@ -125,6 +128,6 @@ export const deleteCaleg = /* GraphQL */ `mutation DeleteCaleg(
   }
 }
 ` as GeneratedMutation<
-  APITypes.DeleteCalegMutationVariables,
-  APITypes.DeleteCalegMutation
+  APITypes.DeleteCalonLegislatifMutationVariables,
+  APITypes.DeleteCalonLegislatifMutation
 >;
