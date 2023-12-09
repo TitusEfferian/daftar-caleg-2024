@@ -16,4 +16,3 @@ type CalonLegislatif @model @auth(rules: [{allow: public}]) {
   dapil: String!
   no: Int!
 }
- 

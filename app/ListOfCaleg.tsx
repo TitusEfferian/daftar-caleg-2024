@@ -1,26 +1,33 @@
 'use client';
 
-import { Card, Center, SimpleGrid, Text } from '@mantine/core';
+import { Badge, Card, Center, SimpleGrid, Stack, Text } from '@mantine/core';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { useIntersection } from '@mantine/hooks';
 import { useSearchParams } from 'next/navigation';
-import useListOfCaleg from '@/hooks/useListOfCaleg';
+
+import { useQueryClient } from '@tanstack/react-query';
+import useCalonLegislatif from '@/hooks/useCalonLegislatif';
 
 const ListOfCaleg = () => {
     const searchParams = useSearchParams();
-    const { isLoading, data, fetchNextPage } = useListOfCaleg({ searchName: searchParams.get('name') ?? '' });
+    const { isLoading, data, fetchNextPage, setCurrPage } = useCalonLegislatif({ searchName: searchParams.get('name') ?? '' });
     const containerRef = useRef<HTMLDivElement>(null);
     const { ref, entry } = useIntersection({
         root: containerRef.current,
         threshold: 0.9,
     });
-
+    // const client = useQueryClient();
+    // console.log(client.getQueryData(?['listOfCaleg', 'rozali']));
     useEffect(() => {
+        if ((data?.pages[data.pages.length - 1].length || 0) < 10) {
+            return;
+        }
         if (entry?.isIntersecting) {
+            setCurrPage(prev => prev + 1);
             fetchNextPage();
         }
-    }, [entry?.isIntersecting, fetchNextPage]);
+    }, [data?.pages, entry?.isIntersecting, fetchNextPage, setCurrPage]);
 
     if (isLoading) {
         return <p>loading</p>;
@@ -29,8 +36,8 @@ const ListOfCaleg = () => {
     return (
         <SimpleGrid cols={3}>
             {
-                data?.pages.map(page => page.data.listCalonLegislatifs.items.map((x, y) => {
-                    if (y === page.data.listCalonLegislatifs.items.length - 1) {
+                data?.pages.map(page => page.map((x, y) => {
+                    if (y === page.length - 1) {
                         return (
                             <Card
                               ref={ref}
@@ -40,6 +47,7 @@ const ListOfCaleg = () => {
                               href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                               target="_blank"
                             >
+
                                 <Card.Section>
                                     <Center>
                                         <Image
@@ -50,6 +58,7 @@ const ListOfCaleg = () => {
                                         />
                                     </Center>
                                 </Card.Section>
+
                                 <Text size="lg" mt="md">
                                     {x.name}
                                 </Text>
@@ -81,16 +90,19 @@ const ListOfCaleg = () => {
                                     />
                                 </Center>
                             </Card.Section>
-                            <Text size="lg" mt="md">
-                                {x.name}
-                            </Text>
-                            <Text size="lg" mt="md">
-                                {x.dapil}
-                            </Text>
+                            <Stack>
+                                <Text size="lg" mt="md">
+                                    {x.name}
+                                </Text>
+                                <Badge color="red">MANTAN NAPI KORUPSI</Badge>
+                                <Text size="lg" mt="md">
+                                    {x.dapil}
+                                </Text>
 
-                            <Text mt="xs" c="dimmed" size="sm">
-                                {x.party}
-                            </Text>
+                                <Text mt="xs" c="dimmed" size="sm">
+                                    {x.party}
+                                </Text>
+                            </Stack>
                         </Card>
                     );
                 }

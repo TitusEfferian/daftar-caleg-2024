@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: any }) {
       <body>
         <AmplifyParent>
           <QueryProvider>
-            <MantineProvider theme={theme}>
+            <MantineProvider defaultColorScheme="dark" theme={theme}>
               <Container>
                 <Stack>
                   <Header />

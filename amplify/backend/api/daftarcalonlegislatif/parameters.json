@@ -1,5 +1,5 @@
 {
-  "AppSyncApiName": "daftarcaleg",
+  "AppSyncApiName": "daftarcalonlegislatif",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false
 }

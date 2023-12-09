@@ -13,10 +13,9 @@ import {
   SwitchField,
   TextField,
 } from "@aws-amplify/ui-react";
+import { CalonLegislatif } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
-import { generateClient } from "aws-amplify/api";
-import { createCalonLegislatif } from "../graphql/mutations";
-const client = generateClient();
+import { DataStore } from "aws-amplify/datastore";
 export default function CalonLegislatifCreateForm(props) {
   const {
     clearOnSuccess = true,
@@ -140,14 +139,7 @@ export default function CalonLegislatifCreateForm(props) {
               modelFields[key] = null;
             }
           });
-          await client.graphql({
-            query: createCalonLegislatif.replaceAll("__typename", ""),
-            variables: {
-              input: {
-                ...modelFields,
-              },
-            },
-          });
+          await DataStore.save(new CalonLegislatif(modelFields));
           if (onSuccess) {
             onSuccess(modelFields);
           }
@@ -156,8 +148,7 @@ export default function CalonLegislatifCreateForm(props) {
           }
         } catch (err) {
           if (onError) {
-            const messages = err.errors.map((e) => e.message).join("\n");
-            onError(modelFields, messages);
+            onError(modelFields, err.message);
           }
         }
       }}

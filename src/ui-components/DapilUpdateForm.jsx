@@ -7,11 +7,9 @@
 /* eslint-disable */
 import * as React from "react";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import { Dapil } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
-import { generateClient } from "aws-amplify/api";
-import { getDapil } from "../graphql/queries";
-import { updateDapil } from "../graphql/mutations";
-const client = generateClient();
+import { DataStore } from "aws-amplify/datastore";
 export default function DapilUpdateForm(props) {
   const {
     id: idProp,
@@ -43,12 +41,7 @@ export default function DapilUpdateForm(props) {
   React.useEffect(() => {
     const queryData = async () => {
       const record = idProp
-        ? (
-            await client.graphql({
-              query: getDapil.replaceAll("__typename", ""),
-              variables: { id: idProp },
-            })
-          )?.data?.getDapil
+        ? await DataStore.query(Dapil, idProp)
         : dapilModelProp;
       setDapilRecord(record);
     };
@@ -116,22 +109,17 @@ export default function DapilUpdateForm(props) {
               modelFields[key] = null;
             }
           });
-          await client.graphql({
-            query: updateDapil.replaceAll("__typename", ""),
-            variables: {
-              input: {
-                id: dapilRecord.id,
-                ...modelFields,
-              },
-            },
-          });
+          await DataStore.save(
+            Dapil.copyOf(dapilRecord, (updated) => {
+              Object.assign(updated, modelFields);
+            })
+          );
           if (onSuccess) {
             onSuccess(modelFields);
           }
         } catch (err) {
           if (onError) {
-            const messages = err.errors.map((e) => e.message).join("\n");
-            onError(modelFields, messages);
+            onError(modelFields, err.message);
           }
         }
       }}

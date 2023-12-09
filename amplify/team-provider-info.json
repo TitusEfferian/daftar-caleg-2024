@@ -1,15 +1,15 @@
 {
   "production": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-daftarcaleg-production-60808-authRole",
-      "UnauthRoleArn": "arn:aws:iam::588497192517:role/amplify-daftarcaleg-production-60808-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::588497192517:role/amplify-daftarcaleg-production-60808-authRole",
+      "AuthRoleName": "amplify-daftarcalonlegislati-production-134656-authRole",
+      "UnauthRoleArn": "arn:aws:iam::588497192517:role/amplify-daftarcalonlegislati-production-134656-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::588497192517:role/amplify-daftarcalonlegislati-production-134656-authRole",
       "Region": "ap-southeast-1",
-      "DeploymentBucketName": "amplify-daftarcaleg-production-60808-deployment",
-      "UnauthRoleName": "amplify-daftarcaleg-production-60808-unauthRole",
-      "StackName": "amplify-daftarcaleg-production-60808",
-      "StackId": "arn:aws:cloudformation:ap-southeast-1:588497192517:stack/amplify-daftarcaleg-production-60808/565d91c0-8ceb-11ee-ac08-025489204dd6",
-      "AmplifyAppId": "d3h2hpksmjqq4m"
+      "DeploymentBucketName": "amplify-daftarcalonlegislati-production-134656-deployment",
+      "UnauthRoleName": "amplify-daftarcalonlegislati-production-134656-unauthRole",
+      "StackName": "amplify-daftarcalonlegislati-production-134656",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:588497192517:stack/amplify-daftarcalonlegislati-production-134656/16949510-9507-11ee-91af-0291d7dee93a",
+      "AmplifyAppId": "d1w990lxvmk8je"
     }
   }
 }

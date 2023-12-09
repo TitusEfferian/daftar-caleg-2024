@@ -13,11 +13,9 @@ import {
   SwitchField,
   TextField,
 } from "@aws-amplify/ui-react";
+import { CalonLegislatif } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
-import { generateClient } from "aws-amplify/api";
-import { getCalonLegislatif } from "../graphql/queries";
-import { updateCalonLegislatif } from "../graphql/mutations";
-const client = generateClient();
+import { DataStore } from "aws-amplify/datastore";
 export default function CalonLegislatifUpdateForm(props) {
   const {
     id: idProp,
@@ -76,12 +74,7 @@ export default function CalonLegislatifUpdateForm(props) {
   React.useEffect(() => {
     const queryData = async () => {
       const record = idProp
-        ? (
-            await client.graphql({
-              query: getCalonLegislatif.replaceAll("__typename", ""),
-              variables: { id: idProp },
-            })
-          )?.data?.getCalonLegislatif
+        ? await DataStore.query(CalonLegislatif, idProp)
         : calonLegislatifModelProp;
       setCalonLegislatifRecord(record);
     };
@@ -131,7 +124,7 @@ export default function CalonLegislatifUpdateForm(props) {
           city,
           img_src,
           ex_koruptor,
-          ex_koruptor_source: ex_koruptor_source ?? null,
+          ex_koruptor_source,
           dapil,
           no,
         };
@@ -163,22 +156,17 @@ export default function CalonLegislatifUpdateForm(props) {
               modelFields[key] = null;
             }
           });
-          await client.graphql({
-            query: updateCalonLegislatif.replaceAll("__typename", ""),
-            variables: {
-              input: {
-                id: calonLegislatifRecord.id,
-                ...modelFields,
-              },
-            },
-          });
+          await DataStore.save(
+            CalonLegislatif.copyOf(calonLegislatifRecord, (updated) => {
+              Object.assign(updated, modelFields);
+            })
+          );
           if (onSuccess) {
             onSuccess(modelFields);
           }
         } catch (err) {
           if (onError) {
-            const messages = err.errors.map((e) => e.message).join("\n");
-            onError(modelFields, messages);
+            onError(modelFields, err.message);
           }
         }
       }}
