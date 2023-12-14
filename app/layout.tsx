@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: any }) {
         <AmplifyParent>
           <QueryProvider>
             <MantineProvider defaultColorScheme="dark" theme={theme}>
-              <Container>
+              <Container mt="xl">
                 <Stack>
                   <Header />
                   {children}

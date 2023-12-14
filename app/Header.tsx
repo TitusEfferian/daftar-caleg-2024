@@ -17,6 +17,9 @@ const Header = () => {
       <Title order={3}>
         cek kredibilitas calon legislatif pilihanmu, dan pastikan mereka bersih dari korupsi
       </Title>
+      <Title order={5}>
+        Terakhir Di Perbaharui: 30 November 2023
+      </Title>
     </>
   );
 };
