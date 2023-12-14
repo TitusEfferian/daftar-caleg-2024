@@ -1,9 +1,9 @@
 export type AmplifyDependentResourcesAttributes = {
-  "api": {
-    "daftarcalonlegislatif": {
-      "GraphQLAPIEndpointOutput": "string",
-      "GraphQLAPIIdOutput": "string",
-      "GraphQLAPIKeyOutput": "string"
-    }
-  }
-}
+  api: {
+    daftarcalonlegislatif: {
+      GraphQLAPIEndpointOutput: 'string';
+      GraphQLAPIIdOutput: 'string';
+      GraphQLAPIKeyOutput: 'string';
+    };
+  };
+};
