@@ -24,14 +24,6 @@ const ListOfCaleg = () => {
   });
 
   useEffect(() => {
-    import('aws-amplify/analytics').then(x => {
-      x.record({
-        name: 'homeVisit',
-      });
-    });
-  }, []);
-
-  useEffect(() => {
     if ((data?.pages[data.pages.length - 1].length || 0) < 10) {
       return;
     }
