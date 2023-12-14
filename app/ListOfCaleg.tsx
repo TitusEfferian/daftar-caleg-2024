@@ -20,7 +20,7 @@ const ListOfCaleg = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { ref, entry } = useIntersection({
     root: containerRef.current,
-    threshold: 0.9,
+    threshold: 0.7,
   });
 
   useEffect(() => {
