@@ -2,6 +2,7 @@
 
 import { Anchor, Badge, Card, Center, SimpleGrid, Stack, Text } from '@mantine/core';
 import Image from 'next/image';
+
 import { useEffect, useRef } from 'react';
 import { useIntersection } from '@mantine/hooks';
 import { useSearchParams } from 'next/navigation';
@@ -21,6 +22,14 @@ const ListOfCaleg = () => {
     root: containerRef.current,
     threshold: 0.9,
   });
+
+  useEffect(() => {
+    import('aws-amplify/analytics').then(x => {
+      x.record({
+        name: 'homeVisit',
+      });
+    });
+  }, []);
 
   useEffect(() => {
     if ((data?.pages[data.pages.length - 1].length || 0) < 10) {

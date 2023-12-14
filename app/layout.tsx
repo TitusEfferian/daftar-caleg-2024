@@ -8,8 +8,8 @@ import QueryProvider from './QueryProvider';
 import Header from './Header';
 
 export const metadata = {
-  title: 'Mantine Next.js template',
-  description: 'I am using Mantine with Next.js!',
+  title: 'Daftar Calon Legislatif (CALEG)',
+  description: 'Daftar Calon Legislatif 2024',
 };
 
 export default function RootLayout({ children }: { children: any }) {

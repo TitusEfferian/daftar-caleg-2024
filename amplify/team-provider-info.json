@@ -10,6 +10,17 @@
       "StackName": "amplify-daftarcalonlegislati-production-134656",
       "StackId": "arn:aws:cloudformation:ap-southeast-1:588497192517:stack/amplify-daftarcalonlegislati-production-134656/16949510-9507-11ee-91af-0291d7dee93a",
       "AmplifyAppId": "d1w990lxvmk8je"
+    },
+    "categories": {
+      "api": {
+        "daftarcalonlegislatif": {}
+      },
+      "auth": {
+        "daftarcalonlegislati25329de9": {}
+      },
+      "analytics": {
+        "calegPinpoint": {}
+      }
     }
   }
 }

@@ -1,0 +1,21 @@
+{
+    "appName": "calegPinpoint",
+    "roleName": "pinpointLambdaRole7ef7e098",
+    "cloudformationPolicyName": "cloudformationPolicy7ef7e098",
+    "cloudWatchPolicyName": "cloudWatchPolicy7ef7e098",
+    "pinpointPolicyName": "pinpointPolicy7ef7e098",
+    "authPolicyName": "pinpoint_amplify_7ef7e098",
+    "unauthPolicyName": "pinpoint_amplify_7ef7e098",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

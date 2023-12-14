@@ -1,6 +1,10 @@
-import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from '@aws-amplify/datastore';
+import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled } from '@aws-amplify/datastore';
+import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
+
+
+
+
 
 type EagerDapil = {
   readonly [__modelMeta__]: {
@@ -12,7 +16,7 @@ type EagerDapil = {
   readonly nama_dapil: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-};
+}
 
 type LazyDapil = {
   readonly [__modelMeta__]: {
@@ -24,13 +28,13 @@ type LazyDapil = {
   readonly nama_dapil: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-};
+}
 
-export declare type Dapil = LazyLoading extends LazyLoadingDisabled ? EagerDapil : LazyDapil;
+export declare type Dapil = LazyLoading extends LazyLoadingDisabled ? EagerDapil : LazyDapil
 
 export declare const Dapil: (new (init: ModelInit<Dapil>) => Dapil) & {
   copyOf(source: Dapil, mutator: (draft: MutableModel<Dapil>) => MutableModel<Dapil> | void): Dapil;
-};
+}
 
 type EagerCalonLegislatif = {
   readonly [__modelMeta__]: {
@@ -49,7 +53,7 @@ type EagerCalonLegislatif = {
   readonly no: number;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-};
+}
 
 type LazyCalonLegislatif = {
   readonly [__modelMeta__]: {
@@ -68,17 +72,10 @@ type LazyCalonLegislatif = {
   readonly no: number;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-};
+}
 
-export declare type CalonLegislatif = LazyLoading extends LazyLoadingDisabled
-  ? EagerCalonLegislatif
-  : LazyCalonLegislatif;
+export declare type CalonLegislatif = LazyLoading extends LazyLoadingDisabled ? EagerCalonLegislatif : LazyCalonLegislatif
 
-export declare const CalonLegislatif: (new (
-  init: ModelInit<CalonLegislatif>
-) => CalonLegislatif) & {
-  copyOf(
-    source: CalonLegislatif,
-    mutator: (draft: MutableModel<CalonLegislatif>) => MutableModel<CalonLegislatif> | void
-  ): CalonLegislatif;
-};
+export declare const CalonLegislatif: (new (init: ModelInit<CalonLegislatif>) => CalonLegislatif) & {
+  copyOf(source: CalonLegislatif, mutator: (draft: MutableModel<CalonLegislatif>) => MutableModel<CalonLegislatif> | void): CalonLegislatif;
+}
