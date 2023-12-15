@@ -1,10 +1,10 @@
-type Dapil @model @auth(rules: [{allow: public}]) {
+type Dapil @model @auth(rules: [{allow: public, operations: [read]}]) {
   id: ID!
   kode_dapil: String!
   nama_dapil: String!
 }
 
-type CalonLegislatif @model @auth(rules: [{allow: public}]) {
+type CalonLegislatif @model @auth(rules: [{allow: public, operations: [read]}]) {
   id: ID!
   name: String!
   party: String!
@@ -16,3 +16,4 @@ type CalonLegislatif @model @auth(rules: [{allow: public}]) {
   dapil: String!
   no: Int!
 }
+ 
