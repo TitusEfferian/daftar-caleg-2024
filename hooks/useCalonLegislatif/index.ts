@@ -9,22 +9,82 @@ import { DataStore, Predicates } from 'aws-amplify/datastore';
 import { useState } from 'react';
 import { CalonLegislatif } from '@/src/models';
 
-const useCalonLegislatif = ({ searchName = '', corrupted = false }) => {
+interface UseCalonLegislatifParams {
+  searchName?: string;
+  corrupted?: boolean;
+  dapil?: string[];
+}
+// const subscription = () => new Promise((resolve) => {
+//     const subscription = DataStore.observeQuery(
+//       CalonLegislatif, Predicates.ALL,{}
+//     ).subscribe(snapshot => {
+//       const { items, isSynced } = snapshot;
+//       console.log(`[Snapshot] item count: ${items.length}, isSynced: ${isSynced}`);
+//     });
+//   });
+
+const useCalonLegislatif = ({
+  searchName = '',
+  corrupted = false,
+  dapil = [],
+}: UseCalonLegislatifParams) => {
   const [currPage, setCurrPage] = useState(0);
   const result = useInfiniteQuery({
-    queryKey: ['listOfCaleg', searchName, corrupted],
+    queryKey: ['listOfCaleg', searchName, corrupted, dapil],
     refetchOnWindowFocus: false,
     staleTime: Infinity,
     queryFn: async ({ pageParam }) => {
       // corrupted and name
-      if (corrupted && searchName !== '') {
+      if (corrupted && searchName !== '' && dapil.length !== 0) {
         const listOfCaleg = await DataStore.query(
           CalonLegislatif,
           (c) =>
             c.and((cNested) => [
               cNested.ex_koruptor.eq(true),
               cNested.name.contains(searchName.toUpperCase()),
+              cNested.or((cNestedOr) => dapil.map((x) => cNestedOr.dapil.eq(x))),
             ]),
+          {
+            page: pageParam,
+            limit: 10,
+          }
+        );
+        return listOfCaleg;
+      }
+      if (searchName !== '' && dapil.length > 0) {
+        const listOfCaleg = await DataStore.query(
+          CalonLegislatif,
+          (c) =>
+            c.and((cNested) => [
+              cNested.name.contains(searchName.toUpperCase()),
+              cNested.or((cNestedOr) => dapil.map((x) => cNestedOr.dapil.eq(x))),
+            ]),
+          {
+            page: pageParam,
+            limit: 10,
+          }
+        );
+        return listOfCaleg;
+      }
+      if (corrupted && dapil.length > 0) {
+        const listOfCaleg = await DataStore.query(
+          CalonLegislatif,
+          (c) =>
+            c.and((cNested) => [
+              cNested.ex_koruptor.eq(true),
+              cNested.or((cNestedOr) => dapil.map((x) => cNestedOr.dapil.eq(x))),
+            ]),
+          {
+            page: pageParam,
+            limit: 10,
+          }
+        );
+        return listOfCaleg;
+      }
+      if (dapil.length > 0) {
+        const listOfCaleg = await DataStore.query(
+          CalonLegislatif,
+          (c) => c.or((cNested) => dapil.map((x) => cNested.dapil.eq(x))),
           {
             page: pageParam,
             limit: 10,
@@ -58,10 +118,9 @@ const useCalonLegislatif = ({ searchName = '', corrupted = false }) => {
       });
       return listOfCaleg;
     },
+    refetchInterval: 100,
     initialPageParam: currPage,
     getNextPageParam: () => currPage + 1,
-    refetchOnMount: false,
-    refetchOnReconnect: false,
   });
   return { ...result, setCurrPage };
 };

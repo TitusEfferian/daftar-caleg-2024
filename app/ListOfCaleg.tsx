@@ -16,7 +16,9 @@ const ListOfCaleg = () => {
   const { isLoading, data, fetchNextPage, setCurrPage } = useCalonLegislatif({
     searchName: searchParams.get('name') ?? '',
     corrupted: Boolean(searchParams.get('corrupted')) ?? false,
+    dapil: searchParams.getAll('dapil') ?? [],
   });
+
   const containerRef = useRef<HTMLDivElement>(null);
   const { ref, entry } = useIntersection({
     root: containerRef.current,
@@ -32,7 +34,9 @@ const ListOfCaleg = () => {
       fetchNextPage();
     }
   }, [data?.pages, entry?.isIntersecting, fetchNextPage, setCurrPage]);
-
+  if (typeof data === 'undefined') {
+    return <p>loading</p>;
+  }
   if (isLoading) {
     return <p>loading</p>;
   }

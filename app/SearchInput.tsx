@@ -22,6 +22,10 @@ const SearchInput = () => {
     }
     push(`${pathname}?${newParams}`);
   }, [pathname, push, searchParams, searchValue]);
+
+  // const handleResetAll = useCallback(() => {
+  //   push('/');
+  // }, [push]);
   return (
     <Group>
       <Box style={{ flex: 2 }}>
@@ -38,7 +42,8 @@ const SearchInput = () => {
           placeholder="Cari nama calon"
         />
       </Box>
-      <Button onClick={handleOnClick}>click</Button>
+      <Button onClick={handleOnClick}>Cari</Button>
+      {/* <Button onClick={handleResetAll} variant="outline">Reset</Button> */}
     </Group>
   );
 };

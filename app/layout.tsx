@@ -3,12 +3,13 @@ import React from 'react';
 import { MantineProvider, ColorSchemeScript, Container, Stack } from '@mantine/core';
 
 import { Metadata } from 'next';
+import { ModalsProvider } from '@mantine/modals';
 import { theme } from '../theme';
 import AmplifyParent from './AmplifyParent';
 import QueryProvider from './QueryProvider';
 import Header from './Header';
 
-export const metadata:Metadata = {
+export const metadata: Metadata = {
   title: 'Daftar Calon Legislatif (CALEG)',
   description: 'Daftar Calon Legislatif 2024',
 };
@@ -22,18 +23,23 @@ export default function RootLayout({ children }: { children: any }) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
-        <meta name="google-site-verification" content="o9PNSnEBMCuHFw8gmRMlawng1UjsFiGCKRVYXi_C9mg" />
+        <meta
+          name="google-site-verification"
+          content="o9PNSnEBMCuHFw8gmRMlawng1UjsFiGCKRVYXi_C9mg"
+        />
       </head>
       <body>
         <AmplifyParent>
           <QueryProvider>
             <MantineProvider defaultColorScheme="dark" theme={theme}>
-              <Container mt="xl">
-                <Stack>
-                  <Header />
-                  {children}
-                </Stack>
-              </Container>
+              <ModalsProvider>
+                <Container mt="xl">
+                  <Stack>
+                    <Header />
+                    {children}
+                  </Stack>
+                </Container>
+              </ModalsProvider>
             </MantineProvider>
           </QueryProvider>
         </AmplifyParent>

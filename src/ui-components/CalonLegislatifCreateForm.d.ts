@@ -4,66 +4,77 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
-import * as React from "react";
-import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import * as React from 'react';
+import { GridProps, SwitchFieldProps, TextFieldProps } from '@aws-amplify/ui-react';
 export declare type EscapeHatchProps = {
-    [elementHierarchy: string]: Record<string, unknown>;
+  [elementHierarchy: string]: Record<string, unknown>;
 } | null;
 export declare type VariantValues = {
-    [key: string]: string;
+  [key: string]: string;
 };
 export declare type Variant = {
-    variantValues: VariantValues;
-    overrides: EscapeHatchProps;
+  variantValues: VariantValues;
+  overrides: EscapeHatchProps;
 };
 export declare type ValidationResponse = {
-    hasError: boolean;
-    errorMessage?: string;
+  hasError: boolean;
+  errorMessage?: string;
 };
-export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
+export declare type ValidationFunction<T> = (
+  value: T,
+  validationResponse: ValidationResponse
+) => ValidationResponse | Promise<ValidationResponse>;
 export declare type CalonLegislatifCreateFormInputValues = {
-    name?: string;
-    party?: string;
-    gender?: string;
-    city?: string;
-    img_src?: string;
-    ex_koruptor?: boolean;
-    ex_koruptor_source?: string;
-    dapil?: string;
-    no?: number;
+  name?: string;
+  party?: string;
+  gender?: string;
+  city?: string;
+  img_src?: string;
+  ex_koruptor?: boolean;
+  ex_koruptor_source?: string;
+  dapil?: string;
+  no?: number;
 };
 export declare type CalonLegislatifCreateFormValidationValues = {
-    name?: ValidationFunction<string>;
-    party?: ValidationFunction<string>;
-    gender?: ValidationFunction<string>;
-    city?: ValidationFunction<string>;
-    img_src?: ValidationFunction<string>;
-    ex_koruptor?: ValidationFunction<boolean>;
-    ex_koruptor_source?: ValidationFunction<string>;
-    dapil?: ValidationFunction<string>;
-    no?: ValidationFunction<number>;
+  name?: ValidationFunction<string>;
+  party?: ValidationFunction<string>;
+  gender?: ValidationFunction<string>;
+  city?: ValidationFunction<string>;
+  img_src?: ValidationFunction<string>;
+  ex_koruptor?: ValidationFunction<boolean>;
+  ex_koruptor_source?: ValidationFunction<string>;
+  dapil?: ValidationFunction<string>;
+  no?: ValidationFunction<number>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type CalonLegislatifCreateFormOverridesProps = {
-    CalonLegislatifCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    name?: PrimitiveOverrideProps<TextFieldProps>;
-    party?: PrimitiveOverrideProps<TextFieldProps>;
-    gender?: PrimitiveOverrideProps<TextFieldProps>;
-    city?: PrimitiveOverrideProps<TextFieldProps>;
-    img_src?: PrimitiveOverrideProps<TextFieldProps>;
-    ex_koruptor?: PrimitiveOverrideProps<SwitchFieldProps>;
-    ex_koruptor_source?: PrimitiveOverrideProps<TextFieldProps>;
-    dapil?: PrimitiveOverrideProps<TextFieldProps>;
-    no?: PrimitiveOverrideProps<TextFieldProps>;
+  CalonLegislatifCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
+  name?: PrimitiveOverrideProps<TextFieldProps>;
+  party?: PrimitiveOverrideProps<TextFieldProps>;
+  gender?: PrimitiveOverrideProps<TextFieldProps>;
+  city?: PrimitiveOverrideProps<TextFieldProps>;
+  img_src?: PrimitiveOverrideProps<TextFieldProps>;
+  ex_koruptor?: PrimitiveOverrideProps<SwitchFieldProps>;
+  ex_koruptor_source?: PrimitiveOverrideProps<TextFieldProps>;
+  dapil?: PrimitiveOverrideProps<TextFieldProps>;
+  no?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
-export declare type CalonLegislatifCreateFormProps = React.PropsWithChildren<{
+export declare type CalonLegislatifCreateFormProps = React.PropsWithChildren<
+  {
     overrides?: CalonLegislatifCreateFormOverridesProps | undefined | null;
-} & {
+  } & {
     clearOnSuccess?: boolean;
-    onSubmit?: (fields: CalonLegislatifCreateFormInputValues) => CalonLegislatifCreateFormInputValues;
+    onSubmit?: (
+      fields: CalonLegislatifCreateFormInputValues
+    ) => CalonLegislatifCreateFormInputValues;
     onSuccess?: (fields: CalonLegislatifCreateFormInputValues) => void;
     onError?: (fields: CalonLegislatifCreateFormInputValues, errorMessage: string) => void;
-    onChange?: (fields: CalonLegislatifCreateFormInputValues) => CalonLegislatifCreateFormInputValues;
+    onChange?: (
+      fields: CalonLegislatifCreateFormInputValues
+    ) => CalonLegislatifCreateFormInputValues;
     onValidate?: CalonLegislatifCreateFormValidationValues;
-} & React.CSSProperties>;
-export default function CalonLegislatifCreateForm(props: CalonLegislatifCreateFormProps): React.ReactElement;
+  } & React.CSSProperties
+>;
+export default function CalonLegislatifCreateForm(
+  props: CalonLegislatifCreateFormProps
+): React.ReactElement;
