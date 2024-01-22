@@ -2,7 +2,7 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-import * as APITypes from "../API";
+import * as APITypes from '../API';
 type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationInput: InputType;
   __generatedMutationOutput: OutputType;
@@ -24,10 +24,7 @@ export const createDapil = /* GraphQL */ `mutation CreateDapil(
     __typename
   }
 }
-` as GeneratedMutation<
-  APITypes.CreateDapilMutationVariables,
-  APITypes.CreateDapilMutation
->;
+` as GeneratedMutation<APITypes.CreateDapilMutationVariables, APITypes.CreateDapilMutation>;
 export const updateDapil = /* GraphQL */ `mutation UpdateDapil(
   $input: UpdateDapilInput!
   $condition: ModelDapilConditionInput
@@ -44,10 +41,7 @@ export const updateDapil = /* GraphQL */ `mutation UpdateDapil(
     __typename
   }
 }
-` as GeneratedMutation<
-  APITypes.UpdateDapilMutationVariables,
-  APITypes.UpdateDapilMutation
->;
+` as GeneratedMutation<APITypes.UpdateDapilMutationVariables, APITypes.UpdateDapilMutation>;
 export const deleteDapil = /* GraphQL */ `mutation DeleteDapil(
   $input: DeleteDapilInput!
   $condition: ModelDapilConditionInput
@@ -64,10 +58,7 @@ export const deleteDapil = /* GraphQL */ `mutation DeleteDapil(
     __typename
   }
 }
-` as GeneratedMutation<
-  APITypes.DeleteDapilMutationVariables,
-  APITypes.DeleteDapilMutation
->;
+` as GeneratedMutation<APITypes.DeleteDapilMutationVariables, APITypes.DeleteDapilMutation>;
 export const createCalonLegislatif = /* GraphQL */ `mutation CreateCalonLegislatif(
   $input: CreateCalonLegislatifInput!
   $condition: ModelCalonLegislatifConditionInput

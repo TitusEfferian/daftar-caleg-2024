@@ -118,7 +118,6 @@ const useCalonLegislatif = ({
       });
       return listOfCaleg;
     },
-    refetchInterval: 100,
     initialPageParam: currPage,
     getNextPageParam: () => currPage + 1,
   });

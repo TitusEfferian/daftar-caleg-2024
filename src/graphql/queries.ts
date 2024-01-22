@@ -2,7 +2,7 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-import * as APITypes from "../API";
+import * as APITypes from '../API';
 type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryInput: InputType;
   __generatedQueryOutput: OutputType;
@@ -44,10 +44,7 @@ export const listDapils = /* GraphQL */ `query ListDapils(
     __typename
   }
 }
-` as GeneratedQuery<
-  APITypes.ListDapilsQueryVariables,
-  APITypes.ListDapilsQuery
->;
+` as GeneratedQuery<APITypes.ListDapilsQueryVariables, APITypes.ListDapilsQuery>;
 export const syncDapils = /* GraphQL */ `query SyncDapils(
   $filter: ModelDapilFilterInput
   $limit: Int
@@ -76,10 +73,7 @@ export const syncDapils = /* GraphQL */ `query SyncDapils(
     __typename
   }
 }
-` as GeneratedQuery<
-  APITypes.SyncDapilsQueryVariables,
-  APITypes.SyncDapilsQuery
->;
+` as GeneratedQuery<APITypes.SyncDapilsQueryVariables, APITypes.SyncDapilsQuery>;
 export const getCalonLegislatif = /* GraphQL */ `query GetCalonLegislatif($id: ID!) {
   getCalonLegislatif(id: $id) {
     id
@@ -100,10 +94,7 @@ export const getCalonLegislatif = /* GraphQL */ `query GetCalonLegislatif($id: I
     __typename
   }
 }
-` as GeneratedQuery<
-  APITypes.GetCalonLegislatifQueryVariables,
-  APITypes.GetCalonLegislatifQuery
->;
+` as GeneratedQuery<APITypes.GetCalonLegislatifQueryVariables, APITypes.GetCalonLegislatifQuery>;
 export const listCalonLegislatifs = /* GraphQL */ `query ListCalonLegislatifs(
   $filter: ModelCalonLegislatifFilterInput
   $limit: Int

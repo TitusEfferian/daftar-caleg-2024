@@ -14,7 +14,6 @@ import { Dapil } from '@/src/models';
 const useListDapil = () => {
   const queryData = useQuery({
     queryKey: ['listDapil'],
-    refetchInterval: 100,
     queryFn: async () => {
       const data = await DataStore.query(Dapil);
       return data;

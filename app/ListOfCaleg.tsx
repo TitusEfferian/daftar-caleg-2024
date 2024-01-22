@@ -1,23 +1,38 @@
 'use client';
 
-import { Anchor, Badge, Card, Center, SimpleGrid, Stack, Text } from '@mantine/core';
-import Image from 'next/image';
+import { Anchor, Badge, Card, Center, Image, SimpleGrid, Stack, Text } from '@mantine/core';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useIntersection } from '@mantine/hooks';
 import { useSearchParams } from 'next/navigation';
 
 import Link from 'next/link';
+import { Hub } from 'aws-amplify/utils';
 import useCalonLegislatif from '@/hooks/useCalonLegislatif';
+import { CalonLegislatif } from '@/src/models';
 
 const ListOfCaleg = () => {
   const searchParams = useSearchParams();
-
-  const { isLoading, data, fetchNextPage, setCurrPage } = useCalonLegislatif({
+  const [loadingDefault, setLoading] = useState(true);
+  const { data, fetchNextPage, setCurrPage, refetch } = useCalonLegislatif({
     searchName: searchParams.get('name') ?? '',
     corrupted: Boolean(searchParams.get('corrupted')) ?? false,
     dapil: searchParams.getAll('dapil') ?? [],
   });
+
+  useEffect(() => {
+    Hub.listen('datastore', (capsule) => {
+      // @ts-ignore
+      if (
+        capsule.channel === 'datastore' &&
+        capsule.payload.event === 'modelSynced' &&
+        capsule.payload.data.model === CalonLegislatif
+      ) {
+        setLoading(false);
+        refetch();
+      }
+    });
+  }, [refetch]);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const { ref, entry } = useIntersection({
@@ -34,11 +49,9 @@ const ListOfCaleg = () => {
       fetchNextPage();
     }
   }, [data?.pages, entry?.isIntersecting, fetchNextPage, setCurrPage]);
-  if (typeof data === 'undefined') {
-    return <p>loading</p>;
-  }
-  if (isLoading) {
-    return <p>loading</p>;
+
+  if (loadingDefault) {
+    return <Text>Sedang melakukan penarikan data...</Text>;
   }
 
   return (
@@ -56,7 +69,7 @@ const ListOfCaleg = () => {
               <Card ref={ref} shadow="sm" padding="xl" component="a">
                 <Card.Section>
                   <Center>
-                    <Image src={x.img_src} width={150} height={200} alt="No way!" />
+                    <Image src={x.img_src} width={150} height={200} alt={x.name} loading="lazy" />
                   </Center>
                 </Card.Section>
                 <Stack>
@@ -86,7 +99,7 @@ const ListOfCaleg = () => {
             <Card shadow="sm" padding="xl" component="a">
               <Card.Section>
                 <Center>
-                  <Image src={x.img_src} width={150} height={200} alt="No way!" />
+                  <Image src={x.img_src} width={150} height={200} alt={x.name} loading="lazy" />
                 </Center>
               </Card.Section>
               <Stack>

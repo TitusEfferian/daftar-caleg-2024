@@ -2,16 +2,33 @@
 
 import { Button, Chip, Group, Modal, ScrollArea, Stack, Text } from '@mantine/core';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { Hub } from 'aws-amplify/utils';
 import useListDapil from '@/hooks/useListdapil';
+import { Dapil } from '@/src/models';
 
 const FilterSort = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { push } = useRouter();
   const [tempStoreState, setTempStoreState] = useState<string[]>([]);
-  const { data, isLoading } = useListDapil();
+  const { data, refetch } = useListDapil();
   const [opened, setOpened] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    Hub.listen('datastore', (capsule) => {
+      // @ts-ignore
+      if (
+        capsule.channel === 'datastore' &&
+        capsule.payload.event === 'modelSynced' &&
+        capsule.payload.data.model === Dapil
+      ) {
+        setLoading(false);
+        refetch();
+      }
+    });
+  }, [refetch]);
 
   const handleOnClickKoruptor = useCallback(() => {
     const newParams = new URLSearchParams(searchParams);
@@ -81,7 +98,7 @@ const FilterSort = () => {
           setOpened(false);
         }}
       >
-        {isLoading ? (
+        {loading ? (
           <Text>Loading</Text>
         ) : (
           <Stack>
